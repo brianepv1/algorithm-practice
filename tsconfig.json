@@ -1,0 +1,13 @@
+{
+    "compilerOptions": {
+      // Le dice a TS que trate cada archivo como un módulo ES moderno
+      "module": "NodeNext", 
+      // Esta opción fuerza a que cada archivo sea un módulo, resolviendo el problema
+      "moduleDetection": "force", 
+      "target": "es2020",
+      "strict": true,
+      "esModuleInterop": true,
+      "skipLibCheck": true,
+      "forceConsistentCasingInFileNames": true
+    }
+  }
