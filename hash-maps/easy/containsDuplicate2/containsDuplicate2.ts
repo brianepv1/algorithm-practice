@@ -1,33 +1,31 @@
 function containsNearbyDuplicate(nums: number[], k: number): boolean {
-    let windowContents = new Set<number>();
-    let start = 0;
+    const windowContents = new Set<number>();
+    let i = 0; // Let's rename 'start' to 'i' to represent the right edge
 
-    while(start < nums.length ){
+    while (i < nums.length) {
+        const currentNumber = nums[i];
 
-        const currentNumber = nums[start];
-
-        if(windowContents.has(currentNumber)){
+        if (windowContents.has(currentNumber)) {
             return true;
         }
 
         windowContents.add(currentNumber);
-
-        if(windowContents.size >= k){
-            windowContents.delete(nums[start - k])
+        
+        if (i >= k) {
+            const leftmostNumber = nums[i - k];
+            windowContents.delete(leftmostNumber);
         }
-
-        start++;
-        console.log(windowContents);
+        
+        i++;
     }
-    return false
+    return false;
 }
 
 const result1 = containsNearbyDuplicate([1, 2, 3, 1], 3);
-console.log("Result: ", result1)
+console.log("Result 1 (true): ", result1);
 
 const result2 = containsNearbyDuplicate([1, 0, 1, 1], 1);
-console.log("Result: ", result2)
+console.log("Result 2 (true): ", result2);
 
 const result3 = containsNearbyDuplicate([1, 2, 3, 1, 2, 3], 2);
-console.log("Result: ", result3)
-
+console.log("Result 3 (false): ", result3);
